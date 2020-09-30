@@ -1,0 +1,4 @@
+cp cp $PATHCLONE/lib/x86_64-linux-gnu/libotracker.so.1.0.7 .
+ln -s libotracker.so.1.0.7 libotracker.so.1.0
+ln -s libotracker.so.1.0.7 libotracker.so
+

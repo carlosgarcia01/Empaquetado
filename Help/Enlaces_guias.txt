@@ -1,0 +1,4 @@
+https://apiko.com/blog/node-js-performance-c-addons/
+https://nodejs.org/api/addons.html
+https://github.com/nodejs/node-gyp/issues/328
+https://stackoverflow.com/questions/50531237/node-gyp-c-import-shared-library-so

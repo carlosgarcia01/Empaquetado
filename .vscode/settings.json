@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "qstring": "cpp",
+        "qthread": "cpp",
+        "qdebug": "cpp",
+        "*.tcc": "cpp",
+        "qstringlist": "cpp",
+        "qobject": "cpp",
+        "chrono": "cpp",
+        "qapplication": "cpp",
+        "qcoreapplication": "cpp"
+    }
+}

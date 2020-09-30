@@ -1,0 +1,98 @@
+Desde la carpeta en la que está el index.js:
+
+Compilación:
+    rm -rf build/ && node-gyp configure && node-gyp build
+
+Ejecución:
+    node index.js
+
+Si da problemas al compilar tipo:
+
+----------------------------------------------------------------
+Package Qt5UiPlugin was not found in the pkg-config search path.
+Perhaps you should add the directory containing `Qt5UiPlugin.pc'
+to the PKG_CONFIG_PATH environment variable
+
+Se soluciona buscando el archivo .pc indicado y haciendo:
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:<path-archivo.pc>
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/Qt5.14.2/5.14.2/gcc_64/lib/pkgconfig
+----------------------------------------------------------------
+Otro error al hacer node index.js: Error: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5: version `Qt_5' not found (required by /home/alvaro/Documents/AURA/Empaquetado_funcionalidades/Empaquetado_Node/build/Release/addon.node)
+
+Se soluciona con el orden de los "library_dirs", debe estar primero "/usr/lib/x86_64-linux-gnu", ya que primero tenía "/opt/Qt5.14.2/5.14.2/gcc_64/lib" por otra librería y daba el error.
+----------------------------------------------------------------
+Error que daba al utilizar la clase v8 de node: era debido a la versión de node, la 12 no es compatible, hay que utilizar la 14. Para que se actualice el node utilizado hay que hacer:
+
+. /home/alvaro/.profile
+----------------------------------------------------------------
+Error que da al utilizar una clase que hereda de QObject y tiene la macro Q_OBJECT. Daba el error de símbolo no definido, creo que _ZNTV6 o similar. Se soluciona incluyendo el moc de la clase que se genera al compilarlo con QtCretor (qmake && make).
+----------------------------------------------------------------
+Error al añadir la clase videostreaming, al compilar sale "error: cannot use typeid with -fno-rtti" en varios archivos incluidos, para solucionarlo se pone, dentro de la condición
+
+'conditions': [
+    ['OS=="linux"', {
+      'cflags_cc!': ['-fno-rtti'],
+      'cflags_cc+': ['-frtti'],
+
+La solución se ha encontrado en la página https://github.com/nodejs/node-gyp/issues/26
+----------------------------------------------------------------
+Error al añadir la clase videostreaming, al compilar sale "error: exception handling disabled, use -fexceptions to enable", se soluciona añadiendo:
+
+(también se ha solucionado otro error que salía "../c++/classes/videostreaming.h:344:43: error: ‘e’ was not declared in this scope")
+
+'cflags!': [
+    '-fno-exceptions'
+],
+'cflags_cc!': [
+    '-fno-exceptions'
+],
+
+Otra manera es incluirlo en:
+
+'cflags_cc+': [
+    '-fexceptions'
+],
+
+También se puede añadir en 
+
+'cflags': [
+    '<!@(pkg-config --cflags Qt5Core Qt5Gui Qt5Network Qt5Qml Qt5DBus Qt5Sql Qt5Quick Qt5Widgets Qt5PrintSupport)',
+    '-fexceptions'
+],
+
+aunque sólo con la primera ya funcionaba, por lo que no es necesario. 
+
+La solución se ha encontrado en la página https://github.com/nodejs/node-gyp/issues/26
+----------------------------------------------------------------
+
+
+
+
+
+
+cd gui/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /home/alvaro/oscann/gui/gui.pro -o Makefile ) && make -f Makefile 
+make[1]: Entering directory '/home/alvaro/oscann/gui'
+/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name gui gui.qrc -o qrc_gui.cpp
+g++ -c -ggdb -O2 -std=c++0x -W -D__STDC_CONSTANT_MACROS -fPIC -DSVNVERSION="\"Unversioned directory\"" -DOSCANN=1 -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_QUICK_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_DBUS_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -I. -Iqtquick2applicationviewer -Iv4l2headers/include -IsharedMemoryheaders/include -I../plugins/bgPupilDetection/include -isystem /usr/local/include/opencv4 -isystem /usr/local/include -Isrc -isystem /usr/local/include/bsoncxx/v_noabi -isystem /usr/local/include/mongocxx/v_noabi -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtPrintSupport -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtQuick -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtSql -isystem /usr/include/x86_64-linux-gnu/qt5/QtDBus -isystem /usr/include/x86_64-linux-gnu/qt5/QtQml -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -o qrc_gui.o qrc_gui.cpp
+g++ -m64 -Wl,-O1 -o ../bin/oscann main.o videostreaming.o usbdev.o fileio.o qdevicewatcher.o data.o process.o utilsprocess.o qpoints.o qcustomplot.o oscannplot.o qstimulus.o imagepreview.o qutils.o videopreview.o pdfreport.o pdfreporthelper.o cameraviewer.o logger.o aurajson.o qtquick2applicationviewer.o qrc_gui.o moc_qtquick2applicationviewer.o moc_videostreaming.o moc_usbdev.o moc_fileio.o moc_qdevicewatcher.o moc_data.o moc_process.o moc_qpoints.o moc_qutils.o moc_qcustomplot.o moc_oscannplot.o moc_qstimulus.o moc_imagepreview.o moc_videopreview.o moc_pdfreport.o moc_cameraviewer.o moc_aurajson.o oscann_interface.o oscann_adaptor.o moc_oscann_interface.o moc_oscann_adaptor.o   -L/usr/X11R6/lib64 -lv4lconvert -lavutil -lavcodec -lavformat -lswscale -ludev -L/usr/local/lib -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_videoio -lopencv_imgcodecs -L/lib -lrt -lmongocxx -lbsoncxx -L../lib/x86_64-linux-gnu -lotracker -ltbb -lboost_system -lQt5PrintSupport -lQt5Widgets -lQt5Quick -lQt5Gui -lQt5Sql -lQt5DBus -lQt5Qml -lQt5Network -lQt5Core -lGL -lpthread 
+make[1]: Leaving directory '/home/alvaro/oscann/gui'
+cd plugins/bgPupilDetection/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /home/alvaro/oscann/plugins/bgPupilDetection/bgPupilDetection.pro -o Makefile ) && make -f Makefile 
+make[1]: Entering directory '/home/alvaro/oscann/plugins/bgPupilDetection'
+make[1]: Nothing to be done for 'first'.
+make[1]: Leaving directory '/home/alvaro/oscann/plugins/bgPupilDetection'
+cd plugins/bgImageWriter/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /home/alvaro/oscann/plugins/bgImageWriter/bgImageWriter.pro -o Makefile ) && make -f Makefile 
+make[1]: Entering directory '/home/alvaro/oscann/plugins/bgImageWriter'
+make[1]: Nothing to be done for 'first'.
+make[1]: Leaving directory '/home/alvaro/oscann/plugins/bgImageWriter'
+cd plugins/bgVideoCapturer/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /home/alvaro/oscann/plugins/bgVideoCapturer/bgVideoCapturer.pro -o Makefile ) && make -f Makefile 
+make[1]: Entering directory '/home/alvaro/oscann/plugins/bgVideoCapturer'
+make[1]: Nothing to be done for 'first'.
+make[1]: Leaving directory '/home/alvaro/oscann/plugins/bgVideoCapturer'
+cd plugins/displayCT/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /home/alvaro/oscann/plugins/displayCT/displayCT.pro -o Makefile ) && make -f Makefile 
+make[1]: Entering directory '/home/alvaro/oscann/plugins/displayCT'
+make[1]: Nothing to be done for 'first'.
+make[1]: Leaving directory '/home/alvaro/oscann/plugins/displayCT'
+
+
