@@ -13,6 +13,7 @@ using v8::String;
 using v8::Value;
 
 usbdevWrap::usbdevWrap(double value) : value_(value) {
+  qDebug() << "Entrando en el constructor de usbdevWrap: " << value_;
 }
 
 usbdevWrap::~usbdevWrap() {
@@ -37,6 +38,8 @@ void usbdevWrap::Init(Local<Object> exports) {
   NODE_SET_PROTOTYPE_METHOD(tpl, "openDeviceWrap", openDevice);
   NODE_SET_PROTOTYPE_METHOD(tpl, "serviceSlotWrap", serviceSlot);
   NODE_SET_PROTOTYPE_METHOD(tpl, "MainWrap", mainWrap);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "serviceSlotWrapOff", serviceSlotOff);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "processEvents", processEventsWrap);
 
   Local<Function> constructor = tpl->GetFunction(context).ToLocalChecked();
   addon_data->SetInternalField(0, constructor);
@@ -81,27 +84,37 @@ void usbdevWrap::openDevice(const FunctionCallbackInfo<v8::Value>& args){
   Isolate* isolate = args.GetIsolate();
 
   usbdevWrap* obj = ObjectWrap::Unwrap<usbdevWrap>(args.Holder());
-  bool res = obj->oscannlight->openDevice();
-
+  qDebug() << "Llamando a oscannlight->openDevice()";
+  bool res = obj->oscannlight.openDevice();
+  qDebug() << "Despues de oscannlight->openDevice()";
   args.GetReturnValue().Set(Number::New(isolate, res));
 }
 
 void usbdevWrap::serviceSlot(const FunctionCallbackInfo<v8::Value>& args){
   Isolate* isolate = args.GetIsolate();
-
   usbdevWrap* obj = ObjectWrap::Unwrap<usbdevWrap>(args.Holder());
   bool res = 0;
+  
+  qDebug() << "cameraType: " << obj->VS.getCameraType();
+  
+  obj->VS.serviceSlot(1, "bgVideoCapturer", 1, "", 120);
 
-  qDebug() << "cameraType: " << obj->VS->getCameraType();
+  //usleep(5000);
 
-  obj->VS->serviceSlot(1, "bgVideoCapturer", 1, "", 120);
   //obj->VS.serviceSlot(1, "bgVideoCapturer", 0, "", 120);
 
-  usleep(5000000);
+  args.GetReturnValue().Set(Number::New(isolate, res));
+}
 
-  qDebug() << "cameraType: " << obj->VS->getCameraType();
+void usbdevWrap::serviceSlotOff(const v8::FunctionCallbackInfo<v8::Value>& args){
+  Isolate* isolate = args.GetIsolate();
+  usbdevWrap* obj = ObjectWrap::Unwrap<usbdevWrap>(args.Holder());
+  int res = 55;
 
-  obj->VS->serviceSlot(1, "bgVideoCapturer", 0, "", 120);
+  qDebug() << "Matamos al serviceslot";
+
+  qDebug() << "value_ en serviceslotoff: " << obj->value_;
+  obj->VS.serviceSlot(1, "bgVideoCapturer", 0, "", 120);
 
   args.GetReturnValue().Set(Number::New(isolate, res));
 }
@@ -109,35 +122,40 @@ void usbdevWrap::serviceSlot(const FunctionCallbackInfo<v8::Value>& args){
 void usbdevWrap::mainWrap(const FunctionCallbackInfo<v8::Value>& args){
   Isolate* isolate = args.GetIsolate();
 
-  usbdevWrap* obj = ObjectWrap::Unwrap<usbdevWrap>(args.Holder());
   qDebug() << "Entramos en mainWrap";
+  usbdevWrap* obj = ObjectWrap::Unwrap<usbdevWrap>(args.Holder());
 
   int res = obj->main();
-      qDebug() << "Despues de res main: "<< res;
+  qDebug() << "Despues de res main: "<< res;
   args.GetReturnValue().Set(Number::New(isolate, res));
   qDebug() << "Salimos del mainWrap";
 }
 
+void usbdevWrap::processEventsWrap(const FunctionCallbackInfo<v8::Value>& args) {
+  Isolate* isolate = args.GetIsolate();
+  usbdevWrap* obj = ObjectWrap::Unwrap<usbdevWrap>(args.Holder());
+  obj->processEvents();
+}
+
 int usbdevWrap::main(){
 
-  //QApplication app(int argc, char *argv[]);
   qDebug() << "Entramos en main";
   char **argv = NULL;
   int argc = 0;
-  app = new QApplication(argc,  argv);
+  //QApplication app(argc, argv);
+  app = new QApplication(argc, argv);
 
-  VS = new Videostreaming();
-  CV = new cameraViewer();
-  oscannlight = new usbdev();
-
-  VS->setupDbus();
-  CV->setupDbus();
-    qDebug() << "Despues de setup";
+  VS.setupDbus();
+  CV.setupDbus();
+  
+  qDebug() << "Despues de setup**********************************************";
 
   //VS->serviceSlot(1, "bgVideoCapturer", 1, "", 120);
-
-  return app->exec();
-  //return 20;
+  
+  //return app->exec();
+  return 0;
 }
 
-
+void usbdevWrap::processEvents() {
+  app->processEvents();
+}

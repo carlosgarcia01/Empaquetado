@@ -57,14 +57,11 @@ Release/obj.target/addon/c++/classes_signals/utilsprocess.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QPoint \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
@@ -125,14 +122,11 @@ Release/obj.target/addon/c++/classes_signals/utilsprocess.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qobject.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QPoint:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h:

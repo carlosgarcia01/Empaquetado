@@ -85,20 +85,39 @@ console.log(obj2.serviceSlotWrap());*/
 // obj.MainWrap();
 
 const addon = require('./build/Release/addon');
+const init = require('./obj.js')
 
-const obj = new addon.usbdevWrap(10);
+
+console.log("Entramos en index******************************");
+
+initObject();//obj.MainWrap();
+
+console.log('sale de la funcion******************************');
 
 
-console.log("Entramos en index");
-
-obj.MainWrap();
-
-console.log(obj.plusOneWrap());
-console.log(obj.plusOneWrap());
-console.log(obj.plusOneWrap());
-console.log(obj.plusOneWrap());
-console.log(obj.plusOneWrap());
-console.log(obj.plusOneWrap());
-
-console.log(obj.openDeviceWrap());
 //console.log(obj.serviceSlotWrap()); 
+function otroProcess(obj){
+    // const obj = new addon.usbdevWrap(10);
+    console.log(obj.plusOneWrap());
+    console.log(obj.plusOneWrap());
+    console.log(obj.plusOneWrap());
+    console.log(obj.plusOneWrap());
+    console.log(obj.plusOneWrap());
+    console.log(obj.plusOneWrap());
+    console.log(obj.openDeviceWrap());
+}
+
+function initObject (){
+    const obj = new addon.usbdevWrap(10);
+    console.log("promesa",obj)
+    try{
+        return new Promise((resolve, reject) =>{ 
+            console.log("ejecucion MainWrap()")                
+                obj.MainWrap();
+                otroProcess(obj);
+            resolve(true);
+        })
+    }catch(err){
+        console.log('ERRORRRRR' ,err);
+    }
+}

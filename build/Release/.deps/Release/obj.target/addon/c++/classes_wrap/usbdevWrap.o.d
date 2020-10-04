@@ -68,14 +68,11 @@ Release/obj.target/addon/c++/classes_wrap/usbdevWrap.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h \
  ../c++/classes/videostreaming.h \
  /usr/include/x86_64-linux-gnu/qt5/QtQuick/QQuickPaintedItem \
@@ -91,7 +88,6 @@ Release/obj.target/addon/c++/classes_wrap/usbdevWrap.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtQuick/qtquick-config.h \
  /usr/include/x86_64-linux-gnu/qt5/QtQml/qqml.h \
  /usr/include/x86_64-linux-gnu/qt5/QtQml/qqmlprivate.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h \
  /usr/include/x86_64-linux-gnu/qt5/QtQml/qqmlparserstatus.h \
  /usr/include/x86_64-linux-gnu/qt5/QtQml/qqmlpropertyvaluesource.h \
@@ -769,14 +765,11 @@ Release/obj.target/addon/c++/classes_wrap/usbdevWrap.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qiodevice.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qset.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h:
 ../c++/classes/videostreaming.h:
 /usr/include/x86_64-linux-gnu/qt5/QtQuick/QQuickPaintedItem:
@@ -792,7 +785,6 @@ Release/obj.target/addon/c++/classes_wrap/usbdevWrap.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtQuick/qtquick-config.h:
 /usr/include/x86_64-linux-gnu/qt5/QtQml/qqml.h:
 /usr/include/x86_64-linux-gnu/qt5/QtQml/qqmlprivate.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h:
 /usr/include/x86_64-linux-gnu/qt5/QtQml/qqmlparserstatus.h:
 /usr/include/x86_64-linux-gnu/qt5/QtQml/qqmlpropertyvaluesource.h:

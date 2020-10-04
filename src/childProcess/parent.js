@@ -6,10 +6,14 @@ const obj = require('./usbdev');
 
 console.log('[Parent]', 'initalize');
 
-// const child1 = child_process.fork(__dirname + '/child');
-// child1.on('message', function(data) { 
-//     console.log('[Parent]', 'Answer from child: ', data); 
-// });
+const child1 = child_process.fork(__dirname + '/child');
+child1.on('message', function(data) { 
+    console.log('[Parent]', 'Answer from child: ', data); 
+});
+
+function kill() {
+    console.log("serviceslotoff: ",obj.serviceSlotWrapOff());
+}
 
 // const child1 = child_process.fork('child.js',obj,{cwd:"./src/childProcess"});
 
@@ -17,14 +21,16 @@ console.log('[Parent]', 'initalize');
 // child1.on('message', function(data) { 
 //     console.log('[Parent]', 'Answer from child: ', data); 
 // });
-console.log(obj.serviceSlotWrap());
+//console.log(obj.serviceSlotWrap());
 //console.log("Obj en parent: ",obj.plusOneWrap());
-//child1.send("Exec"); // Hello to you too :)
+child1.send("Exec"); // Hello to you too :)
 
 console.log(obj.plusOneWrap());
 console.log(obj.plusOneWrap());
 //console.log(obj.openDeviceWrap());
-//console.log(obj.serviceSlotWrap());
+console.log(obj.serviceSlotWrap());
+//setTimeout(kill, 5000);
+
 
 // child1.on('exit',()=>console.log('child terminated'))
 

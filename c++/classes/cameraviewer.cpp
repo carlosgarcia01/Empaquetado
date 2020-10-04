@@ -10,6 +10,7 @@ Pixmap  -> mean: 816.780, std:  254.450
 
 
 cameraViewer::cameraViewer() : m_texture(NULL){
+    qDebug() << "Entrando en el constructor de CV";
     setFlag(QQuickItem::ItemHasContents);
     m_logo = QImage(":qml/qtcam/videocapturefilter_QML/images/oscannblue.png");
     m_fromMemory = false;
@@ -19,6 +20,7 @@ cameraViewer::cameraViewer() : m_texture(NULL){
     setDisplayImages(true);
     m_updating = false;
     oTracker = new OTracker();
+    qDebug() << "Saliendo del constructor de CV";
 }
 
 void cameraViewer::setupDbus() {

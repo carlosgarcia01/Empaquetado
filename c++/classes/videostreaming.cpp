@@ -23,6 +23,7 @@ QStringListModel Videostreaming::modelCam;
 Videostreaming::~Videostreaming(){}
 
 Videostreaming::Videostreaming(){
+    qDebug() << "En el constructor de VS";
     numberOfFrames = 0;
     fileInc = 0;
     m_killbgPupilDetectorFlag = false;
@@ -37,6 +38,8 @@ Videostreaming::Videostreaming(){
     mongocxx::instance instance{}; // This should be done only once.
     m_testTimer = NULL;
     m_startTimer = true;
+    m_cameraType = 10; //init value which doesn't correspond to any camera
+    qDebug() << "Saliendo del constructor de VS: " << m_cameraType;
 }
 void Videostreaming::createTimer(){
     m_testTimer = new OTimer(this);
@@ -83,7 +86,6 @@ void Videostreaming::capturerReady(const int cameraType, const int width, const 
     if(cameraType == -1)
         return;
     m_cameraType = cameraType;
-    qDebug()<<Q_FUNC_INFO<<" +++++ +++++ +++++ +++++ +++++ +++++ +++++ +++++  m_cameraType: "<<m_cameraType;
 }
 
 
@@ -188,7 +190,10 @@ void Videostreaming::serviceSlot(const unsigned int type, const QString name, co
             system(QString("./%2 %3 &").arg(name).arg(fps).toLatin1().data());
         }
     }else{
+        qDebug() << "Mandamos el shutdowndbus";
         emit shutdownDBus(type);
+        qDebug() << "Pasamos el shutdowndbus";
+
     }
 }
 void Videostreaming::validateSlot(){

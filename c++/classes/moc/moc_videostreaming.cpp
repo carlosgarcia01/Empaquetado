@@ -928,6 +928,7 @@ void Videostreaming::closeVideo()
 // SIGNAL 7
 void Videostreaming::shutdownDBus(unsigned int _t1)
 {
+    qDebug() << "metodo shutdownDBus";
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 7, _a);
 }

@@ -67,8 +67,6 @@ Release/obj.target/addon/c++/classes_signals/qutils.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDesktopWidget \
  /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h \
@@ -94,7 +92,6 @@ Release/obj.target/addon/c++/classes_signals/qutils.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qfont.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qfontmetrics.h \
@@ -117,7 +114,6 @@ Release/obj.target/addon/c++/classes_signals/qutils.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QObject \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QSettings \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qsettings.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QDir \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h \
@@ -206,8 +202,6 @@ Release/obj.target/addon/c++/classes_signals/qutils.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qmap.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/QDesktopWidget:
 /usr/include/x86_64-linux-gnu/qt5/QtWidgets/qdesktopwidget.h:
@@ -233,7 +227,6 @@ Release/obj.target/addon/c++/classes_signals/qutils.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixelformat.h:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qpixmap.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsharedpointer_impl.h:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qfont.h:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qfontmetrics.h:
@@ -256,7 +249,6 @@ Release/obj.target/addon/c++/classes_signals/qutils.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QObject:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QSettings:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qsettings.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/QDir:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qdir.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qfileinfo.h:

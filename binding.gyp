@@ -39,6 +39,8 @@
         "/usr/include/x86_64-linux-gnu/qt5/QtQml",
         "/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
         #"/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64",
+        #"/usr/local/include/node",
+        #"/usr/include/python3.8",
         "/usr/local/include/node",
         "/usr/include/python3.8",
         "/usr/local/include/opencv4",

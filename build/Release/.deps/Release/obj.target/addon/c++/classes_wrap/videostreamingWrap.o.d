@@ -111,10 +111,6 @@ Release/obj.target/addon/c++/classes_wrap/videostreamingWrap.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h \
- /usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h \
  /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgb.h \
@@ -774,10 +770,6 @@ Release/obj.target/addon/c++/classes_wrap/videostreamingWrap.o: \
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qtextstream.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qlocale.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qstring.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qobjectdefs.h:
-/usr/include/x86_64-linux-gnu/qt5/QtCore/qshareddata.h:
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qcontiguouscache.h:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qcolor.h:
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qrgb.h:

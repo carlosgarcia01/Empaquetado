@@ -1,33 +1,44 @@
 const cluster = require('cluster');
 const addon = require('../../build/Release/addon');
+
 const obj = new addon.usbdevWrap(10);
 
-function errorMsg() {
-  console.error('Something must be wrong with the connection ...');
+obj.MainWrap();
+
+setInterval(() => {
+  console.log('entraa**********************');
+  obj.processEvents();
+}, 300);
+obj.serviceSlotWrap();
+setTimeout(()=>{
+  console.log('Ingresa al time****************************************************');
+  kill()
+},5000)
+
+function kill() {
+  console.log("serviceslotoff: ", obj.serviceSlotWrapOff());
 }
 
-
-
-  if (cluster.isMaster) {
-    /// console.log(`Master ${process.pid} is running`);  // Fork workers.
-      //console.log("creacion de hijo");
-      cluster.fork();
-      cluster.on('fork', (worker) => {
-        //console.log("hilo fork");
-        obj.MainWrap();
-        //console.log('creo el MainWrap*************************************');
-      });
-      cluster.on('exit', (worker, code, signal) => {
-      //console.log(`worker ${worker.process.pid} died`);
-    });
-  } else {
-  // console.log("hilos hijos");
-      console.log(obj.plusOneWrap());
-      console.log(obj.plusOneWrap());
-    //console.log(obj.openDeviceWrap());
-    console.log(obj.serviceSlotWrap());
+// function secondCluster() {
+//   console.log("Entrando en cluster secundario");
+//   //obj.setupWrap();
     console.log(obj.plusOneWrap());
     console.log(obj.plusOneWrap());
-    console.log('proceso los que necesitamos\\\\\\');
-    console.log(`Worker ${process.pid} started`);
-  }
+   console.log(obj.plusOneWrap());
+  
+//   console.log("serviceSlotOut: ",obj.serviceSlotWrap());
+//   kill();
+// }
+
+
+// if (cluster.isMaster) {
+//   console.log(`Master ${process.pid} is running`);  // Fork workers.
+
+//   cluster.fork();
+//   cluster.on('fork', (worker) => {
+//     obj.MainWrap();
+//   });
+
+// } else {
+//   setTimeout(secondCluster, 3000);
+// }
